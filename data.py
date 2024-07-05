@@ -35,3 +35,17 @@ NO_TRACK_GET_ORDER_MESSAGE = '{"code":400,"message":"Недостаточно д
 
 WRONG_TRACK_GET_ORDER_MESSAGE = '{"code":404,"message":"Заказ не найден"}'
 
+LOGIN_ENDPOINT = 'api/v1/courier/login'
+
+REGISTRATION_ENDPOINT = 'api/v1/courier'
+
+DELETE_ENDPOINT = 'api/v1/courier'
+
+ORDERS_ENDPOINT = 'api/v1/orders'
+
+ORDER_TRACK_ENDPOINT = 'api/v1/orders/track'
+
+ACCEPT_ORDER_ENDPOINT = 'api/v1/orders/accept'
+
+COUR_ID_ENDPOINT = 'api/v1/courier'
+

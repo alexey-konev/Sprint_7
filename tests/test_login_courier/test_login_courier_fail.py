@@ -15,7 +15,7 @@ class TestLoginCourierFail:
             "login": f'{new_user[0]}1',  # логин с опечаткой
             "password": new_user[1]  # правильный пароль
         }
-        response = requests.post(f'{data.SCOOTER_URL}/api/v1/courier/login', json=payload)
+        response = requests.post(f'{data.SCOOTER_URL}/{data.LOGIN_ENDPOINT}', json=payload)
 
         assert response.status_code == 404 and response.text == data.INCORRECT_FIELD_MESSAGE
 
@@ -36,7 +36,7 @@ class TestLoginCourierFail:
             "login": new_user[0],  # правильный логин
             "password": f'{new_user[1]}1'  # пароль с опечаткой
         }
-        response = requests.post(f'{data.SCOOTER_URL}/api/v1/courier/login', json=payload)
+        response = requests.post(f'{data.SCOOTER_URL}/{data.LOGIN_ENDPOINT}', json=payload)
 
         assert response.status_code == 404 and response.text == data.INCORRECT_FIELD_MESSAGE
 
@@ -55,7 +55,7 @@ class TestLoginCourierFail:
             "login": "",
             "password": new_user[1]
         }
-        response = requests.post(f'{data.SCOOTER_URL}/api/v1/courier/login', json=payload)
+        response = requests.post(f'{data.SCOOTER_URL}/{data.LOGIN_ENDPOINT}', json=payload)
 
         assert response.status_code == 400 and response.text == data.EMPTY_FIELD_MESSAGE
 
@@ -74,7 +74,7 @@ class TestLoginCourierFail:
             "login": new_user[0],
             "password": ""
         }
-        response = requests.post(f'{data.SCOOTER_URL}/api/v1/courier/login', json=payload)
+        response = requests.post(f'{data.SCOOTER_URL}/{data.LOGIN_ENDPOINT}', json=payload)
 
         assert response.status_code == 400 and response.text == data.EMPTY_FIELD_MESSAGE
 
@@ -93,7 +93,7 @@ class TestLoginCourierFail:
         payload = {
             "password": new_user[1]
         }
-        response = requests.post(f'{data.SCOOTER_URL}/api/v1/courier/login', json=payload)
+        response = requests.post(f'{data.SCOOTER_URL}/{data.LOGIN_ENDPOINT}', json=payload)
 
         assert response.status_code == 400 and response.text == data.EMPTY_FIELD_MESSAGE
 
@@ -111,7 +111,7 @@ class TestLoginCourierFail:
         payload = {
             "login": new_user[0]
         }
-        response = requests.post(f'{data.SCOOTER_URL}/api/v1/courier/login', json=payload)
+        response = requests.post(f'{data.SCOOTER_URL}/{data.LOGIN_ENDPOINT}', json=payload)
 
         # без пароля выдает ошибку 504 (?)  в постмане так же
         assert response.status_code == 504

@@ -14,11 +14,11 @@ class TestDeleteCourier:
             "password": new_user[1]  # 1 - индекс пароля в списке new_user
         }
 
-        response_1 = requests.post(f'{data.SCOOTER_URL}/api/v1/courier/login', json=payload)
+        response_1 = requests.post(f'{data.SCOOTER_URL}/{data.LOGIN_ENDPOINT}', json=payload)
         r = response_1.json()
         cour_id = r['id']
 
-        response_2 = requests.delete(f'{data.SCOOTER_URL}/api/v1/courier/{cour_id}')
+        response_2 = requests.delete(f'{data.SCOOTER_URL}/{data.COUR_ID_ENDPOINT}/{cour_id}')
 
         assert response_2.status_code == 200 and response_2.text == data.OK_MESSAGE
 
